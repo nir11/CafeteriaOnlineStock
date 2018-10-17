@@ -6,7 +6,7 @@ This project is based on the 4-layer model:
 - Database (Sql server)
 - Data access (Class library, Entity framework)
 - Business logic (Web service, Web API)
-- UI (JS, HTML, CSS, Jquery)
+- UI (JS, HTML, CSS, jQuery)
 <br/>
 <h2>Screenshots:</h2>
 <br/>                                                                                                                              
