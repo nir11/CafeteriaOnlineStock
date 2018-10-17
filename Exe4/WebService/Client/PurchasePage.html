@@ -1,0 +1,817 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
+
+    <style>
+
+        body {
+            text-align: center;
+            direction: rtl;
+            padding: 0;
+            margin: 0;
+        }
+
+        #table {
+            width: 80%;
+            margin: auto;
+            padding-top: 100px
+        }
+
+        .product_img {
+            height: 150px;
+            margin: auto;
+            padding-right: 50px;
+            padding-top: 20px;
+        }
+
+        .circle {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            background: blue;
+            /*border: 3px solid red;*/
+            float: left;
+            margin-left: -30px;
+            margin-top: -20px;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            text-align: center;
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        #item_div {
+            width: 300px;
+            margin: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            padding-right: 50px;
+            margin: 0;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .second_div {
+            border: 1px dashed red;
+            border-width: 0 2px 2px 2px;
+            padding-bottom: 10px;
+        }
+
+        .number_and_inventory {
+            float: right;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-right: 5px;
+        }
+
+        .number_and_inventory_result {
+            float: right;
+            padding-right: 5px;
+        }
+
+        .active_purchase_price {
+            border: solid black 3px;
+            background-color: white;
+            width: 80%;
+            margin: auto;
+        }
+
+        .user_amount_choice {
+            font-weight: bold;
+        }
+
+        #cart_amount {   
+            border-radius: 5px;
+            padding-left: 7px;
+            padding-right: 7px;
+            box-shadow: inset 1px 1px 1px 1px #046ca3, inset 1px 1px 1px 1px #046ca3, 1px 1px 1px 1px #046ca3, 1px 1px 1px 1px #046ca3;
+            border: 1px dashed #046ca3;
+        }
+
+        .myButton {
+            -moz-box-shadow: inset 0px 1px 0px 0px #f29c93;
+            -webkit-box-shadow: inset 0px 1px 0px 0px #f29c93;
+            box-shadow: inset 0px 1px 0px 0px #f29c93;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fe1a00), color-stop(1, #ce0100));
+            background: -moz-linear-gradient(top, #fe1a00 5%, #ce0100 100%);
+            background: -webkit-linear-gradient(top, #fe1a00 5%, #ce0100 100%);
+            background: -o-linear-gradient(top, #fe1a00 5%, #ce0100 100%);
+            background: -ms-linear-gradient(top, #fe1a00 5%, #ce0100 100%);
+            background: linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fe1a00', endColorstr='#ce0100',GradientType=0);
+            background-color: #fe1a00;
+            -moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            border-radius: 6px;
+            border: 1px solid #d83526;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: Arial;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 6px 24px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #b23e35;
+        }
+
+            .myButton:hover {
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ce0100), color-stop(1, #fe1a00));
+                background: -moz-linear-gradient(top, #ce0100 5%, #fe1a00 100%);
+                background: -webkit-linear-gradient(top, #ce0100 5%, #fe1a00 100%);
+                background: -o-linear-gradient(top, #ce0100 5%, #fe1a00 100%);
+                background: -ms-linear-gradient(top, #ce0100 5%, #fe1a00 100%);
+                background: linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ce0100', endColorstr='#fe1a00',GradientType=0);
+                background-color: #ce0100;
+            }
+
+            .myButton:active {
+                position: relative;
+                top: 1px;
+            }
+
+        #cart_btn {
+            -moz-box-shadow: inset 0px 1px 0px 0px #97c4fe;
+            -webkit-box-shadow: inset 0px 1px 0px 0px #97c4fe;
+            box-shadow: inset 0px 1px 0px 0px #97c4fe;
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #3d94f6), color-stop(1, #1e62d0));
+            background: -moz-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
+            background: -webkit-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
+            background: -o-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
+            background: -ms-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
+            background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0',GradientType=0);
+            background-color: #3d94f6;
+            -moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            border-radius: 6px;
+            border: 1px solid #337fed;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-family: Arial;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top:10px;
+            padding: 6px 10px;
+            text-decoration: none;
+            text-shadow: 0px 1px 0px #1570cd;
+            width:80%
+        }
+
+        #cart_btn:hover {
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #1e62d0), color-stop(1, #3d94f6));
+            background: -moz-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
+            background: -webkit-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
+            background: -o-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
+            background: -ms-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
+            background: linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6',GradientType=0);
+            background-color: #1e62d0;
+        }
+
+            #cart_btn:active {
+                position: relative;
+                top: 1px;
+            }
+
+
+    </style>
+
+
+    <script>
+        $(document).ready(function () {
+
+            cartAmount = $("#cart_amount");
+
+            spritePrice = $("#sprite_price");
+            spriteNumber = $("#sprite_number");           
+            spriteInv = $("#sprite_inv");
+            spriteUserAmountChoice = $("#sprite_user_amount_choice");          
+
+            cokePrice = $('#coke_price');
+            cokeNumber = $("#coke_number");
+            cokeInv = $("#coke_inv");
+            cokeUserAmountChoice = $("#coke_user_amount_choice");
+
+            nesteaPrice = $("#nestea_price");
+            nesteaNumber = $("#nestea_number");
+            nesteaInv = $("#nestea_inv");
+            nesteaUserAmountChoice = $("#nestea_user_amount_choice");
+
+            pesekZmanPrice = $("#pesek_zman_price");
+            pesekZmanNumber = $("#pesek_zman_number");
+            pesekZmanInv = $("#pesek_zman_inv");
+            pesekZmanUserAmountChoice = $("#pesek_zman_user_amount_choice");
+
+            bambaPrice = $("#bamba_price");
+            bambaNumber = $("#bamba_number");
+            bambaInv = $("#bamba_inv");
+            bambaUserAmountChoice = $("#bamba_user_amount_choice");
+
+            marshmeloPrice = $("#marshmelo_price");
+            marshmeloNumber = $("#marshmelo_number");
+            marshmeloInv = $("#marshmelo_inv");
+            marshmeloUserAmountChoice = $("#marshmelo_user_amount_choice");
+
+            shokoladParaPrice = $("#shokolad_para_price");
+            shokoladParaNumber = $("#shokolad_para_number");
+            shokoladParaInv = $("#shokolad_para_inv");
+            shokoladParaUserAmountChoice = $("#shokolad_para_user_amount_choice");
+
+            egoziPrice = $("#egozi_price");
+            egoziNumber = $("#egozi_number");
+            egoziInv = $("#egozi_inv");
+            egoziUserAmountChoice = $("#egozi_user_amount_choice");
+
+            kifkefPrice = $("#kifkef_price");
+            kifkefNumber = $("#kifkef_number");
+            kifkefInv = $("#kifkef_inv");
+            kifkefUserAmountChoice = $("#kifkef_user_amount_choice");
+
+            apropoPrice = $("#apropo_price");
+            apropoNumber = $("#apropo_number");
+            apropoInv = $("#apropo_inv");
+            apropoUserAmountChoice = $("#apropo_user_amount_choice");
+
+            bisliPrice = $("#bisli_price");
+            bisliNumber = $("#bisli_number");
+            bisliInv = $("#bisli_inv");
+            bisliUserAmountChoice = $("#bisli_user_amount_choice");
+
+            updateAllItems("ספרייט", spriteNumber, spriteInv, spritePrice);
+            updateAllItems("קולה", cokeNumber, cokeInv, cokePrice);
+            updateAllItems("nestea", nesteaNumber, nesteaInv, nesteaPrice);
+            updateAllItems("פסק זמן", pesekZmanNumber, pesekZmanInv, pesekZmanPrice);
+            updateAllItems("במבה", bambaNumber, bambaInv, bambaPrice);
+            updateAllItems("מרשמלו", marshmeloNumber, marshmeloInv, marshmeloPrice);
+            updateAllItems("שוקולד פרה", shokoladParaNumber, shokoladParaInv, shokoladParaPrice);
+            updateAllItems("אגוזי", egoziNumber, egoziInv, egoziPrice);
+            updateAllItems("כיפכיף", kifkefNumber, kifkefInv, kifkefPrice);
+            updateAllItems("אפרופו", apropoNumber, apropoInv, apropoPrice);
+            updateAllItems("ביסלי", bisliNumber, bisliInv, bisliPrice);       
+
+        })    
+
+    
+        function updateAllItems(itemName, itemNumber, itemInv, itemPrice) {
+
+            $.ajax({
+
+                dataType: "json",			                         //סוג הנתונים שאנחנו מצפים לקבל מהשרת
+                url: "/api/product/" + itemName,			                 //הכתובת לשרת ולפונקציה
+                contentType: "application/json; charset=utf-8",	   //סוג הנתונים שאנחנו שולחים לשרת
+                type: "GET",				                         //סוג הפעולה
+                //data: JSON.stringify({}),			                 //הנתונים עצמם שאנחנו שולחים
+                success: function (data) {                       //פונקציה  שתופעל לאחר הצלחה                   
+
+                    itemNumber.text(data[0].number);
+                    itemInv.text(data[0].inv);
+                    itemPrice.html(data[0].price + '<br>' +  "ש\"ח");
+                },
+                error: function () {
+                    itemNumber.text("error");
+                    itemInv.text("error");
+                    itemPrice.html("error");
+                }
+            });
+        }    
+
+        function itemPlus(item, itemInv, itemPrice) {
+
+            if (parseInt(itemInv.text()) > 0) {
+                var currentAmount = parseInt(item.text());
+                item.text(currentAmount + 1)
+                itemInv.text(parseInt(itemInv.text()) - 1);
+                cartPlus(itemPrice);
+            }
+            else alert("אזל מהמלאי!");
+        }
+
+        function itemMinus(item, itemInv, itemPrice) {
+
+            if (parseInt(item.text()) > 0) {
+                var currentAmount = parseInt(item.text());
+                item.text(currentAmount - 1)
+                itemInv.text(parseInt(itemInv.text()) + 1);
+                cartMinus(itemPrice);
+            }
+        }
+
+        function cartPlus(itemInv) {
+
+            cartAmount.text(parseFloat(cartAmount.text()) + parseFloat(itemInv.text()) + " ש\"ח");          
+            $("#cart_btn").css('visibility', 'visible');
+        }
+
+        function cartMinus(itemInv) {
+
+            cartAmount.text(parseFloat(cartAmount.text()) - parseFloat(itemInv.text()) + " ש\"ח");
+            checkIfCartIsEmpty();
+        }
+
+        function checkIfCartIsEmpty() {
+
+            if (parseInt(cartAmount.text()) == 0)
+                $("#cart_btn").css('visibility', 'hidden');
+        }
+
+        function finishPurchase() {
+
+            var sprite = {
+                name: "ספרייט",
+                number: spriteNumber.text(),
+                price: spritePrice.html(),
+                inv: spriteInv.text(),
+                amount: spriteUserAmountChoice.text()          
+            }
+            localStorage.setItem("sprite", JSON.stringify(sprite));
+
+            var coke = {
+                name: "קולה",
+                number: cokeNumber.text(),
+                price: cokePrice.html(),
+                inv: cokeInv.text(),
+                amount: cokeUserAmountChoice.text()
+            }
+            localStorage.setItem("coke", JSON.stringify(coke));
+
+            var nestea = {
+                name: "nestea",
+                number: nesteaNumber.text(),
+                price: nesteaPrice.html(),
+                inv: nesteaInv.text(),
+                amount: nesteaUserAmountChoice.text()
+            }
+            localStorage.setItem("nestea", JSON.stringify(nestea));
+
+            var pesekZman = {
+                name: "פסק זמן",
+                number: pesekZmanNumber.text(),
+                price: pesekZmanPrice.html(),
+                inv: pesekZmanInv.text(),
+                amount: pesekZmanUserAmountChoice.text()
+            }
+            localStorage.setItem("pesekZman", JSON.stringify(pesekZman));
+
+            var bamba = {
+                name: "במבה",
+                number: bambaNumber.text(),
+                price: bambaPrice.html(),
+                inv: bambaInv.text(),
+                amount: bambaUserAmountChoice.text()
+            }
+            localStorage.setItem("bamba", JSON.stringify(bamba));
+
+            var marshmelo = {
+                name: "מרשמלו",
+                number: marshmeloNumber.text(),
+                price: marshmeloPrice.html(),
+                inv: marshmeloInv.text(),
+                amount: marshmeloUserAmountChoice.text()
+            }
+            localStorage.setItem("marshmelo", JSON.stringify(marshmelo));
+
+            var shokoladPara = {
+                name: "שוקולד פרה",
+                number: shokoladParaNumber.text(),
+                price: shokoladParaPrice.html(),
+                inv: shokoladParaInv.text(),
+                amount: shokoladParaUserAmountChoice.text()
+            }
+            localStorage.setItem("shokoladPara", JSON.stringify(shokoladPara));
+
+            var egozi = {
+                name: "אגוזי",
+                number: egoziNumber.text(),
+                price: egoziPrice.html(),
+                inv: egoziInv.text(),
+                amount: egoziUserAmountChoice.text()
+            }
+            localStorage.setItem("egozi", JSON.stringify(egozi));
+
+            var kifkef = {
+                name: "כיפכיף",
+                number: kifkefNumber.text(),
+                price: kifkefPrice.html(),
+                inv: kifkefInv.text(),
+                amount: kifkefUserAmountChoice.text()
+            }
+            localStorage.setItem("kifkef", JSON.stringify(kifkef));
+
+            var apropo = {
+                name: "אפרופו",
+                number: apropoNumber.text(),
+                price: apropoPrice.html(),
+                inv: apropoInv.text(),
+                amount: apropoUserAmountChoice.text()
+            }
+            localStorage.setItem("apropo", JSON.stringify(apropo));
+
+            var bisli = {
+                name: "ביסלי",
+                number: bisliNumber.text(),
+                price: bisliPrice.html(),
+                inv: bisliInv.text(),
+                amount: bisliUserAmountChoice.text()
+            }
+            localStorage.setItem("bisli", JSON.stringify(bisli));
+
+            localStorage.setItem("totalCart", JSON.stringify(cartAmount.text()));
+    
+            location.href = "CheckOutPage.html";
+        }      
+
+        function spritePlus() {
+            itemPlus(spriteUserAmountChoice, spriteInv, spritePrice);
+        }
+
+        function spriteMinus() {
+            itemMinus(spriteUserAmountChoice, spriteInv, spritePrice);
+        }
+
+        function cokePlus() {
+            itemPlus(cokeUserAmountChoice, cokeInv, cokePrice);
+        }
+
+        function cokeMinus() {
+            itemMinus(cokeUserAmountChoice, cokeInv, cokePrice);
+        }
+
+        function nesteaPlus() {
+            itemPlus(nesteaUserAmountChoice, nesteaInv, nesteaPrice);
+        }
+
+        function nesteaMinus() {
+            itemMinus(nesteaUserAmountChoice, nesteaInv, nesteaPrice);
+        }
+
+        function pesekZmanPlus() {
+            itemPlus(pesekZmanUserAmountChoice, pesekZmanInv, pesekZmanPrice);
+        }
+
+        function pesekZmanMinus() {
+            itemMinus(pesekZmanUserAmountChoice, pesekZmanInv, pesekZmanPrice);
+        }
+
+        function bambaPlus() {
+            itemPlus(bambaUserAmountChoice, bambaInv, bambaPrice);
+        }
+
+        function bambaMinus() {
+            itemMinus(bambaUserAmountChoice, bambaInv, bambaPrice);
+        }
+
+        function marshmeloPlus() {
+            itemPlus(marshmeloUserAmountChoice, marshmeloInv, marshmeloPrice);
+        }
+
+        function marshmeloMinus() {
+            itemMinus(marshmeloUserAmountChoice, marshmeloInv, marshmeloPrice);
+        }
+
+        function shokoladParaPlus() {
+            itemPlus(shokoladParaUserAmountChoice, shokoladParaInv, shokoladParaPrice);
+        }
+
+        function shokoladParaMinus() {
+            itemMinus(shokoladParaUserAmountChoice, shokoladParaInv, shokoladParaPrice);
+        }
+
+        function egoziPlus() {
+            itemPlus(egoziUserAmountChoice, egoziInv, egoziPrice);
+        }
+
+        function egoziMinus() {
+            itemMinus(egoziUserAmountChoice, egoziInv, egoziPrice);
+        }
+
+        function kifkefPlus() {
+            itemPlus(kifkefUserAmountChoice, kifkefInv, kifkefPrice);
+        }
+
+        function kifkefMinus() {
+            itemMinus(kifkefUserAmountChoice, kifkefInv, kifkefPrice);
+        }
+
+        function apropoPlus() {
+            itemPlus(apropoUserAmountChoice, apropoInv, apropoPrice);
+        }
+
+        function apropoMinus() {
+            itemMinus(apropoUserAmountChoice, apropoInv, apropoPrice);
+        }
+
+        function bisliPlus() {
+            itemPlus(bisliUserAmountChoice, bisliInv, bisliPrice);
+        }
+
+        function bisliMinus() {
+            itemMinus(bisliUserAmountChoice, bisliInv, bisliPrice);
+        }
+    </script>
+
+</head>
+
+
+<body class="w3-display-container">
+
+    <div class="w3-display-topleft" style="position:fixed">
+        <img  style="height:100px" src="images/cart.png" />    
+        <div>
+            <span id="cart_amount">0 ש"ח</span>
+            <br />
+            <input type="button" id="cart_btn" value="לרכישה" style="visibility:hidden" onclick="finishPurchase()" />
+        </div>
+    </div>
+  
+    <table id="table" border="0">
+        <tr>
+            <!--Sprite-->
+            <td>
+                <div id="item_div" class="w3-display-container">
+                    <div class="circle">
+                        <p id="sprite_price"></p>
+                    </div>
+                    <h1 class="w3-red">ספרייט</h1>
+                    <div class="second_div">
+                        <img class="product_img" src="images/sprite.png" />
+                        <br /><br />
+                        <span class="number_and_inventory">מק"ט:</span>
+                        <span class="number_and_inventory_result" id="sprite_number"></span>
+                        <br />
+                        <span class="number_and_inventory">כמות במלאי:</span>
+                        <span class="number_and_inventory_result" id="sprite_inv"></span>
+                        <br /><br />
+                        <input type="button" class="myButton" style="margin-left:10px" value="+" onclick="spritePlus()"/>
+                        <span class="user_amount_choice" id="sprite_user_amount_choice">0</span>
+                        <input type="button" class="myButton" style="margin-right:10px" value="-" onclick="spriteMinus()" />
+                    </div>
+                </div>
+                <br />
+            </td>
+
+            <!--Coke-->
+            <td>
+                <div id="item_div" class="w3-display-container">
+                    <div class="circle">
+                        <p id="coke_price">
+                        </p>
+                    </div>
+                    <h1 class="w3-red">קולה</h1>
+                    <div class="second_div">
+                        <img class="product_img" src="images/coke.jpg" />
+                        <br /><br />
+                        <span class="number_and_inventory">מק"ט: </span>
+                        <span class="number_and_inventory_result" id="coke_number"></span>
+                        <br />
+                        <span class="number_and_inventory">כמות במלאי:</span>
+                        <span class="number_and_inventory_result" id="coke_inv"></span>
+                        <br /><br />
+                        <input type="button" class="myButton" style="margin-left:10px" value="+" onclick="cokePlus()"/>
+                        <span class="user_amount_choice" id="coke_user_amount_choice">0</span>
+                        <input type="button" class="myButton" style="margin-right:10px" value="-" onclick="cokeMinus()" />
+                    </div>
+                </div>
+                <br />
+            </td>
+
+            <!--Nestea-->
+            <td>
+                <div id="item_div" class="w3-display-container">
+                    <div class="circle">
+                        <p id="nestea_price"></p>
+                    </div>
+                    <h1 class="w3-red" id="sprite_name">Nestea</h1>
+                    <div class="second_div">
+                        <img class="product_img" src="images/nestea.jpg" />
+                        <br /><br />
+                        <span class="number_and_inventory">מק"ט: </span>
+                        <span class="number_and_inventory_result" id="nestea_number"></span>
+                        <br />
+                        <span class="number_and_inventory">כמות במלאי:</span>
+                        <span class="number_and_inventory_result" id="nestea_inv"></span>
+                        <br /><br />
+                        <input type="button" class="myButton" style="margin-left:10px" value="+" onclick="nesteaPlus()" />
+                        <span class="user_amount_choice" id="nestea_user_amount_choice">0</span>
+                        <input type="button" class="myButton" style="margin-right:10px" value="-" onclick="nesteaMinus()"/>
+                    </div>
+                </div>
+                <br />
+            </td>
+        </tr>
+
+        <tr>
+            <!--פסק זמן-->
+            <td>
+                <div id="item_div" class="w3-display-container">
+                    <div class="circle">
+                        <p id="pesek_zman_price"></p>                     
+                    </div>
+                    <h1 class="w3-red">פסק זמן</h1>
+                    <div class="second_div">
+                        <img class="product_img" src="images/pesek_zman.png" />
+                        <br /><br />
+                        <span class="number_and_inventory">מק"ט: </span>
+                        <span class="number_and_inventory_result" id="pesek_zman_number"></span>
+                        <br />
+                        <span class="number_and_inventory">כמות במלאי:</span>
+                        <span class="number_and_inventory_result" id="pesek_zman_inv"></span>
+                        <br /><br />
+                        <input type="button" class="myButton" style="margin-left:10px" value="+" onclick="pesekZmanPlus()" />
+                        <span class="user_amount_choice" id="pesek_zman_user_amount_choice">0</span>
+                        <input type="button" class="myButton" style="margin-right:10px" value="-" onclick="pesekZmanMinus()" />
+                    </div>
+                </div>
+                <br />
+            </td>
+
+            <!--במבה-->
+            <td>
+                <div id="item_div" class="w3-display-container">
+                    <div class="circle">
+                        <p id="bamba_price"></p>
+                    </div>
+                    <h1 class="w3-red">במבה</h1>
+                    <div class="second_div">
+                        <img class="product_img" src="images/bamba.png" />
+                        <br /><br />
+                        <span class="number_and_inventory">מק"ט: </span>
+                        <span class="number_and_inventory_result" id="bamba_number"></span>
+                        <br />
+                        <span class="number_and_inventory">כמות במלאי:</span>
+                        <span class="number_and_inventory_result" id="bamba_inv"></span>
+                        <br /><br />
+                        <input type="button" class="myButton" style="margin-left:10px" value="+" onclick="bambaPlus()" />
+                        <span class="user_amount_choice" id="bamba_user_amount_choice">0</span>
+                        <input type="button" class="myButton" style="margin-right:10px" value="-" onclick="bambaMinus()" />
+                    </div>
+                </div>
+                <br />
+            </td>
+
+            <!--מרשמלו-->
+            <td>
+                <div id="item_div" class="w3-display-container">
+                    <div class="circle">
+                        <p id="marshmelo_price"></p>
+                    </div>
+                    <h1 class="w3-red" id="sprite_name">מרשמלו</h1>
+                    <div class="second_div">
+                        <img class="product_img" src="images/marshmelo.jpg" />
+                        <br /><br />
+                        <span class="number_and_inventory">מק"ט: </span>
+                        <span class="number_and_inventory_result" id="marshmelo_number"></span>
+                        <br />
+                        <span class="number_and_inventory">כמות במלאי:</span>
+                        <span class="number_and_inventory_result" id="marshmelo_inv"></span>
+                        <br /><br />
+                        <input type="button" class="myButton" style="margin-left:10px" value="+" onclick="marshmeloPlus()"/>
+                        <span class="user_amount_choice" id="marshmelo_user_amount_choice">0</span>
+                        <input type="button" class="myButton" style="margin-right:10px" value="-" onclick="marshmeloMinus()"/>
+                    </div>
+                </div>
+                <br />
+            </td>
+        </tr>
+
+        <tr>
+            <!--שוקולד פרה-->
+            <td>
+                <div id="item_div" class="w3-display-container">
+                    <div class="circle">
+                        <p id="shokolad_para_price"></p>
+                    </div>
+                    <h1 class="w3-red">שוקולד פרה</h1>
+                    <div class="second_div">
+                        <img class="product_img" src="images/shokolad_para.jpg" />
+                        <br /><br />
+                        <span class="number_and_inventory">מק"ט: </span>
+                        <span class="number_and_inventory_result" id="shokolad_para_number"></span>
+                        <br />
+                        <span class="number_and_inventory">כמות במלאי:</span>
+                        <span class="number_and_inventory_result" id="shokolad_para_inv"></span>
+                        <br /><br />
+                        <input type="button" class="myButton" style="margin-left:10px" value="+" onclick="shokoladParaPlus()"/>
+                        <span class="user_amount_choice" id="shokolad_para_user_amount_choice">0</span>
+                        <input type="button" class="myButton" style="margin-right:10px" value="-" onclick="shokoladParaMinus()"/>
+                    </div>
+                </div>
+                <br />
+            </td>
+
+            <!--אגוזי-->
+            <td>
+                <div id="item_div" class="w3-display-container">
+                    <div class="circle">
+                        <p id="egozi_price"></p>
+                    </div>
+                    <h1 class="w3-red">אגוזי</h1>
+                    <div class="second_div">
+                        <img class="product_img" src="images/egozi.jpg" />
+                        <br /><br />
+                        <span class="number_and_inventory">מק"ט: </span>
+                        <span class="number_and_inventory_result" id="egozi_number"></span>
+                        <br />
+                        <span class="number_and_inventory">כמות במלאי:</span>
+                        <span class="number_and_inventory_result" id="egozi_inv"></span>
+                        <br /><br />
+                        <input type="button" class="myButton" style="margin-left:10px" value="+" onclick="egoziPlus()"/>
+                        <span class="user_amount_choice" id="egozi_user_amount_choice">0</span>
+                        <input type="button" class="myButton" style="margin-right:10px" value="-" onclick="egoziMinus()" />
+                    </div>
+                </div>
+                <br />
+            </td>
+
+            <!--כיפכיף-->
+            <td>
+                <div id="item_div" class="w3-display-container">
+                    <div class="circle">
+                        <p id="kifkef_price"></p>
+                    </div>
+                    <h1 class="w3-red" id="sprite_name">כיפכיף</h1>
+                    <div class="second_div">
+                        <img class="product_img" src="images/kifkef.jpg" />
+                        <br /><br />
+                        <span class="number_and_inventory">מק"ט: </span>
+                        <span class="number_and_inventory_result" id="kifkef_number"></span>
+                        <br />
+                        <span class="number_and_inventory">כמות במלאי:</span>
+                        <span class="number_and_inventory_result" id="kifkef_inv"></span>
+                        <br /><br />
+                        <input type="button" class="myButton" style="margin-left:10px" value="+" onclick="kifkefPlus()"/>
+                        <span class="user_amount_choice" id="kifkef_user_amount_choice">0</span>
+                        <input type="button" class="myButton" style="margin-right:10px" value="-" onclick="kifkefMinus()" />
+                    </div>
+                </div>
+                <br />
+            </td>
+        </tr>
+
+        <tr>
+            <!--אפרופו-->
+            <td>
+                <div id="item_div" class="w3-display-container">
+                    <div class="circle">
+                        <p id="apropo_price"></p>
+                    </div>
+                    <h1 class="w3-red">אפרופו</h1>
+                    <div class="second_div">
+                        <img class="product_img" src="images/apropo.jpg" />
+                        <br /><br />
+                        <span class="number_and_inventory">מק"ט: </span>
+                        <span class="number_and_inventory_result" id="apropo_number"></span>
+                        <br />
+                        <span class="number_and_inventory">כמות במלאי:</span>
+                        <span class="number_and_inventory_result" id="apropo_inv"></span>
+                        <br /><br />
+                        <input type="button" class="myButton" style="margin-left:10px" value="+" onclick="apropoPlus()"/>
+                        <span class="user_amount_choice" id="apropo_user_amount_choice">0</span>
+                        <input type="button" class="myButton" style="margin-right:10px" value="-" onclick="apropoMinus()" />
+                    </div>
+                </div>
+                <br />
+            </td>
+
+            <!--ביסלי-->
+            <td>
+                <div id="item_div" class="w3-display-container">
+                    <div class="circle">
+                        <p id="bisli_price"></p>
+                    </div>
+                    <h1 class="w3-red">ביסלי</h1>
+                    <div class="second_div">
+                        <img class="product_img" src="images/bisli.jpg" />
+                        <br /><br />
+                        <span class="number_and_inventory">מק"ט: </span>
+                        <span class="number_and_inventory_result" id="bisli_number"></span>
+                        <br />
+                        <span class="number_and_inventory">כמות במלאי:</span>
+                        <span class="number_and_inventory_result" id="bisli_inv"></span>
+                        <br /><br />
+                        <input type="button" class="myButton" style="margin-left:10px" value="+" onclick="bisliPlus()"/>
+                        <span class="user_amount_choice" id="bisli_user_amount_choice">0</span>
+                        <input type="button" class="myButton" style="margin-right:10px" value="-" onclick="bisliMinus()" />
+                    </div>
+                </div>
+                <br />
+            </td>         
+        </tr>
+    </table>
+   
+</body>
+</html>
