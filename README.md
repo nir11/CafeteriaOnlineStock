@@ -1,7 +1,14 @@
 # CafeteriaOnlineStock
 
-<br/>                                             
-                                                                                                                                 
+Online stock for Cafeteria products.
+This project is based on the 4-layer model:
+- Database (Sql server)
+- Data access (Class library, Entity framework)
+- Business logic (Web service, Web API)
+- UI (JS, HTML, CSS, Jquery)
+<br/>
+Pages description:
+<br/>                                                                                                                              
 <div>
     <h3>Login Page</h3>
     <img src="Exe4/Screenshots/image1.png" width="800">
