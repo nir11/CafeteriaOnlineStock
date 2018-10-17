@@ -1,6 +1,7 @@
 # CafeteriaOnlineStock
 
 Online stock for Cafeteria products.
+<br/>
 This project is based on the 4-layer model:
 - Database (Sql server)
 - Data access (Class library, Entity framework)
