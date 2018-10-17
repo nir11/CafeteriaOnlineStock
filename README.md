@@ -7,15 +7,15 @@ This project is based on the 4-layer model:
 - Business logic (Web service, Web API)
 - UI (JS, HTML, CSS, Jquery)
 <br/>
-<h1>UI:</h1>
+<h2>Pages Screenshots</h2>
 <br/>                                                                                                                              
 <div>
-    <h2>Pages screenshots</h2>
+    <h3>Login Page</h3>
     <img src="Exe4/Screenshots/image1.png" width="800">
 </div>
 <span>=================================================================================</span>
 <div>
-    <h3>Purchase page</h3>
+    <h3>Purchase Page</h3>
     <img src="Exe4/Screenshots/image2.JPG" width="800" />
 </div>
 <span>=================================================================================</span>
