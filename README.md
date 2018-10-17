@@ -7,7 +7,7 @@ This project is based on the 4-layer model:
 - Business logic (Web service, Web API)
 - UI (JS, HTML, CSS, Jquery)
 <br/>
-<h2 style="text-decoration:underline;">Pages Screenshots:</h2>
+<h2 style="text-decoration: underline;">Pages Screenshots:</h2>
 <br/>                                                                                                                              
 <div>
     <h3>Login Page</h3>
