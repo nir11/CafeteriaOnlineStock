@@ -1,9 +1,16 @@
 # CafeteriaOnlineStock
 
 <br/>                                             
-                                                                                         
-<div style="width:100%;">                                                  
-  <img src="Exe4/Screenshots/image1.png" width="400" style="position:relative;">
-  <img src="Exe4/Screenshots/image2.JPG" width="400" style="position:relative;">
-  <img src="Exe4/Screenshots/image3.JPG" width="400" style="position:relative;">
+                                                                                                                                 
+<div>
+    <h3>Login Page</h3>
+    <img src=""Exe4/Screenshots/image1.png" width="500">
+</div>
+<div>
+    <h3>Purchase page</h3>
+    <img src="Exe4/Screenshots/image2.JPG" width="500" />
+</div>
+<div>
+    <h3>Checkout Page/h3>
+    <img src="Exe4/Screenshots/image3.JPG" width="500" />
 </div>
