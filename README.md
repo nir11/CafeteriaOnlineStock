@@ -10,7 +10,7 @@ This project is based on the 4-layer model:
 <h1>UI:</h1>
 <br/>                                                                                                                              
 <div>
-    <h3>Login Page</h3>
+    <h2>Pages screenshots</h2>
     <img src="Exe4/Screenshots/image1.png" width="800">
 </div>
 <span>=================================================================================</span>
