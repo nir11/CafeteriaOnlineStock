@@ -1,5 +1,4 @@
-# CafeteriaOnlineStock  [![Netlify](https://react-api-world.netlify.app/)]
-
+# CafeteriaOnlineStock
 
 Online stock for Cafeteria products.
 <br/>
